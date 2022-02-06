@@ -81,14 +81,16 @@ def conv(f1,f2):
     # init new array that is of same size to contain the result
     res = np.zeros(f1Ext.shape)
     
+    #for the duration of both functions combined
     for i in range(f1len+f2len-2):
+        #initialize the result value
         res[i]=0
+        #for every value in function 1
         for j in range(f1len):
+            #check for overlap
             if (i-j+1 > 0):
-                try:
+                    #add the product
                     res[i] += f1Ext[j] * f2Ext[i-j+1]
-                except:
-                    print(i,j)
     return res
             
             
@@ -102,7 +104,7 @@ npf1Convf3 = np.convolve(f1,f3)
 
 t = np.arange(0, 40+steps*3,steps) 
 
-plt.figure(figsize = (10, 15))
+plt.figure(figsize = (10, 12))
 plt.subplot(3,1,1)
 plt.plot(t,f1Convf2)
 plt.grid()
