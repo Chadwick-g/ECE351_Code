@@ -59,7 +59,10 @@ CLDen1 = sig.convolve(gDen,aDen)
 CLDen2 = sig.convolve(b,sig.convolve(gNum,aDen))
 CLDen =  CLDen1+ CLDen2
 #CLDen = sig.convolve(aDen,(gDen + sig.convolve(b, gNum)))
-CLz, Clp, Clk = sig.tf2zpk(CLNum, CLDen)
+CLz, CLp, CLk = sig.tf2zpk(CLNum, CLDen)
+
+print ("CL num: " +  str(CLNum) + "\nCL den: " + str(CLDen))
+#print ("zeros of CL: " + str(CLz) + "\npoles of CL: " + str(CLp) + "\ngain of CL: " + str(CLk))
 
 lti = sig.lti(CLNum,CLDen)
 tout, yout = sig.step(lti)
